@@ -336,11 +336,7 @@ public class project4main {
 			
 				System.out.println(totalGifts - maxFlow(graph, 0, destIndex));
 
-				
-				
-//				long endTime   = System.nanoTime();
-//				long totalTime = (endTime - startTime)/1000000;
-				//System.out.println(totalTime);
+
 		}
 	
 }
