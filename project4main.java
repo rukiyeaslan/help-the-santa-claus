@@ -4,13 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.Scanner;
 
-
-
 public class project4main {
-
-
-		//static long startTime = System.nanoTime();
-		//static String where = "here";
 
 	          static List<Edge>[] createGraph(int nodes) {
 			    List<Edge>[] graph = new List[nodes];
@@ -41,12 +35,11 @@ public class project4main {
 				    		if(e.cap>0 && level[e.t]<0) {
 				    			level[e.t] = level[f] +1;			    			
 				    			q.add(e.t);
-				    		}
-				    	}			    	
+				    			}
+				    		}			    	
 					}
 				    return level[dest] >= 0;
 			  }
-	 
 			  //iterating thr level list and greating residual graph.
 			  static int sendFlow(List<Edge>[] graph, int[] iter, int[] level, int dest, int u, int f) {
 				  if (u == dest)
@@ -66,7 +59,6 @@ public class project4main {
 				    }
 				    return 0;
 			  }
-
 			  public static int maxFlow(List<Edge>[] graph, int src, int dest) {
 			    int flow = 0;
 			    int[] level = new int[graph.length];
@@ -75,9 +67,8 @@ public class project4main {
 			    
 			      while ( true) {
 			        int df = sendFlow(graph, iter, level, dest, src, Integer.MAX_VALUE);  //find flow from src to dest
-			        if (df == 0) {
-			          
-			          break;}
+			        if (df == 0) 
+				     break;
 			        flow += df;
 			      }
 			    }
@@ -98,9 +89,6 @@ public class project4main {
 					int greenTrain = in.nextInt();
 					for(int i=1; i<greenTrain+1; i++) {
 						int capacity = in.nextInt();
-					
-						
-						
 						vehicleMap.put(index,capacity);
 						greenTrains.put(index,capacity);
 						index++;
@@ -109,9 +97,7 @@ public class project4main {
 					int redTrain = in.nextInt();
 					for(int i=1; i<redTrain+1; i++) {
 						int capacity = in.nextInt();
-					
-						
-						
+
 						vehicleMap.put(index,capacity);
 						redTrains.put(index,capacity);
 						index++;
@@ -121,24 +107,20 @@ public class project4main {
 					int greenRein = in.nextInt();
 					for(int i=1; i<greenRein+1; i++) {
 						int capacity = in.nextInt();
-				
-						
+			
 						vehicleMap.put(index,capacity);
 						greenReins.put(index,capacity);
 						index++;
 						}
-					
-					
+				  
 					int redRein = in.nextInt();
 					HashMap<Integer, Integer> redReins = new HashMap<>();
 					for(int i=1; i<redRein+1; i++) {
 						int capacity = in.nextInt();
-			
-					
+						
 						vehicleMap.put(index,capacity);
 						redReins.put(index,capacity);
 						index++;
-						
 						}
 					
 					int numOfBags = in.nextInt();
@@ -183,7 +165,6 @@ public class project4main {
 						index++;
 						}
 				
-					 
 					for(Map.Entry<String, ArrayList<Integer>> i: pocketMap.entrySet()) {
 						addEdge(graph, 0, i.getValue().get(0), i.getValue().get(1));
 						String x = i.getKey();
@@ -196,7 +177,6 @@ public class project4main {
 								addEdge(graph, index1, j, 1);
 							}
 						}
-						
 						else if(name.equals("b")) {
 							for(int j : greenTrains.keySet()) {
 								addEdge(graph, index1, j, capacity);
@@ -206,7 +186,6 @@ public class project4main {
 								addEdge(graph, index1, j, capacity);
 							}
 						}
-						
 						else if(name.equals("c")) {
 							for(int j : redTrains.keySet()) {
 								addEdge(graph, index1, j, capacity);
@@ -215,8 +194,7 @@ public class project4main {
 							for(int j : redReins.keySet()) {
 								addEdge(graph, index1, j, capacity);
 							}
-						}
-						
+						}						
 						else if(name.equals("d")) {
 							for(int j : greenTrains.keySet()) {
 								addEdge(graph, index1, j, capacity);
@@ -225,8 +203,7 @@ public class project4main {
 							for(int j : redTrains.keySet()) {
 								addEdge(graph, index1, j, capacity);
 							}
-						}
-						
+						}						
 						else if(name.equals("e")) {
 							for(int j : greenReins.keySet()) {
 								addEdge(graph, index1, j, capacity);
@@ -235,8 +212,7 @@ public class project4main {
 							for(int j : redReins.keySet()) {
 								addEdge(graph, index1, j, capacity);
 							}
-						}
-						
+						}						
 						else if(name.equals("ab")) {
 							for(int j : greenTrains.keySet()) {
 								addEdge(graph, index1, j, 1);
@@ -245,8 +221,7 @@ public class project4main {
 							for(int j : greenReins.keySet()) {
 								addEdge(graph, index1, j, 1);
 							}
-						}
-						
+						}						
 						else if(name.equals("ac")) {
 							for(int j : redTrains.keySet()) {
 								addEdge(graph, index1, j, 1);
@@ -255,8 +230,7 @@ public class project4main {
 							for(int j : redReins.keySet()) {
 								addEdge(graph, index1, j, 1);
 							}
-						}
-						
+						}						
 						else if(name.equals("ad")) {
 							for(int j : greenTrains.keySet()) {
 								addEdge(graph, index1, j,1);
@@ -265,8 +239,7 @@ public class project4main {
 							for(int j : redTrains.keySet()) {
 								addEdge(graph, index1, j, 1);
 							}
-						}
-						
+						}						
 						else if(name.equals("ae")) {
 							for(int j : greenReins.keySet()) {
 								addEdge(graph, index1, j, 1);
@@ -275,20 +248,17 @@ public class project4main {
 							for(int j : redReins.keySet()) {
 								addEdge(graph, index1, j, 1);
 							}
-						}
-						
+						}						
 						else if(name.equals("bd")) {
 							for(int j : greenTrains.keySet()) {
 								addEdge(graph, index1, j, capacity);
 							}
-						}
-						
+						}						
 						else if(name.equals("be")) {
 							for(int j : greenReins.keySet()) {
 								addEdge(graph, index1, j, capacity);
 							}
-						}
-						
+						}						
 						else if(name.equals("cd")) {
 							
 							for(int j : redTrains.keySet()) {
@@ -300,20 +270,17 @@ public class project4main {
 							for(int j : redReins.keySet()) {
 								addEdge(graph, index1, j, capacity);
 							}
-						}
-						
+						}						
 						else if(name.equals("abd")) {
 							for(int j : greenTrains.keySet()) {
 								addEdge(graph, index1, j, 1);
 							}
-						}
-						
+						}						
 						else if(name.equals("abe")) {
 							for(int j : greenReins.keySet()) {
 								addEdge(graph, index1, j, 1);
 							}
-						}
-						
+						}						
 						else if(name.equals("acd")) {
 							for(int j : redTrains.keySet()) {
 								addEdge(graph, index1, j, 1);
@@ -325,18 +292,12 @@ public class project4main {
 							}
 						}
 					} 
-					
 					int destIndex = greenTrain + redTrain + redRein + greenRein +numOfBags +1;
 					
 					for(Map.Entry<Integer, Integer> i: vehicleMap.entrySet()) {
 						addEdge(graph, i.getKey(), destIndex, i.getValue());
 
 					}
-
-			
-				System.out.println(totalGifts - maxFlow(graph, 0, destIndex));
-
-
-		}
-	
+					System.out.println(totalGifts - maxFlow(graph, 0, destIndex));
+	}	
 }
